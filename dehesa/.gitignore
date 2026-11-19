@@ -1,0 +1,12 @@
+# repos aninhados: o historico da loja vai em loja.bundle (ver restaurar.sh)
+loja/
+preview/
+# binarios e ambientes
+bin/
+venv/
+__pycache__/
+*.pyc
+# segredos / estado de runtime (regenerados no servidor novo)
+.secret_key
+editor/data/*.log
+editor/data/*.pid

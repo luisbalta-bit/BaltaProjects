@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Dehesa — Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='editor.css') }}?v=1">
+</head>
+<body>
+<header class="top">
+  <div class="wordmark sm">DEHESA</div>
+  <span class="muted top-title">Editor da loja</span>
+  <span class="spacer"></span>
+  <span class="muted hide-sm">Olá, {{ name }}</span>
+  <a class="link" href="{{ url_for('change_password') }}">Palavra-passe</a>
+  <form method="post" action="{{ url_for('logout') }}"><button class="link">Sair</button></form>
+</header>
+
+<div class="layout">
+  <section class="panel">
+    <form id="ask" class="card">
+      <h1 class="serif">O que quer mudar?</h1>
+      <p class="muted small">Descreva por palavras suas. Pode juntar fotografias ou documentos (PDF, lista de preços…).
+        Nada muda na loja até carregar em <strong>Publicar</strong>.</p>
+      <textarea id="prompt" name="prompt" rows="5" required
+        placeholder="Ex.: Acrescenta a mala «Lua» na categoria Malas de pulso, a 48 €, com esta foto."></textarea>
+      <label class="drop" id="drop">
+        <input type="file" id="files" name="files" multiple accept="image/*,.pdf,.txt,.csv,.md,.json">
+        <span>Arraste ficheiros para aqui ou <u>escolha do computador</u></span>
+      </label>
+      <ul id="filelist" class="files"></ul>
+      <div class="ideas">
+        <span class="muted small">Ideias:</span>
+        <button type="button" class="chip">Muda o preço da mala Roma para 49 €</button>
+        <button type="button" class="chip">Põe esta foto como imagem principal da página inicial</button>
+        <button type="button" class="chip">Acrescenta uma faixa a anunciar portes grátis no Natal</button>
+      </div>
+      <button class="btn btn-dark btn-block" id="send">Enviar pedido</button>
+      <div id="formerr" class="alert" hidden role="alert"></div>
+    </form>
+
+    <div id="jobcard" class="card" hidden>
+      <div class="row-between">
+        <h2 class="serif" id="jobtitle">A trabalhar…</h2>
+        <button class="link" id="cancel" hidden>Cancelar</button>
+      </div>
+      <p class="quote" id="jobprompt"></p>
+      <ol id="log" class="log" aria-live="polite"></ol>
+      <div id="jobsummary" class="summary" hidden></div>
+      <div id="joberror" class="alert" hidden></div>
+    </div>
+
+    <div class="card">
+      <div class="row-between">
+        <h2 class="serif">Por publicar</h2>
+        <span class="badge" id="draftcount">0</span>
+      </div>
+      <p class="muted small" id="draftempty">Não há alterações à espera. A loja e a pré-visualização estão iguais.</p>
+      <ol id="draft" class="changes"></ol>
+      <div class="actions" id="draftactions" hidden>
+        <button class="btn btn-dark" id="publish">Publicar na loja</button>
+        <button class="btn btn-line" id="undo">Desfazer a última</button>
+        <button class="btn btn-line danger" id="discard">Descartar todas</button>
+      </div>
+    </div>
+
+    <details class="card">
+      <summary><h2 class="serif inline">Publicações anteriores</h2></summary>
+      <p class="muted small">Pode repor uma versão antiga: fica primeiro na pré-visualização e só muda a loja quando publicar.</p>
+      <ol id="published" class="changes"></ol>
+    </details>
+  </section>
+
+  <section class="viewer">
+    <div class="viewer-bar">
+      <strong>Pré-visualização</strong>
+      <span class="muted small hide-sm">— ainda não é a loja real</span>
+      <span class="spacer"></span>
+      <div class="seg" role="group" aria-label="Tamanho">
+        <button class="on" data-w="">Computador</button><button data-w="390">Telemóvel</button>
+      </div>
+      <button class="link" id="reload">Atualizar</button>
+      <a class="link" href="/" target="_blank" rel="noopener">Abrir ↗</a>
+    </div>
+    <div class="frame-wrap"><iframe id="frame" src="/" title="Pré-visualização da loja"></iframe></div>
+  </section>
+</div>
+
+<dialog id="confirm">
+  <form method="dialog">
+    <p id="confirmtext"></p>
+    <div class="actions"><button class="btn btn-line" value="no">Cancelar</button><button class="btn btn-dark" value="yes" id="confirmyes">Confirmar</button></div>
+  </form>
+</dialog>
+<script src="{{ url_for('static', filename='editor.js') }}?v=1"></script>
+</body>
+</html>

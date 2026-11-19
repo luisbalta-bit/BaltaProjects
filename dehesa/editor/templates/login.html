@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Dehesa — Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='editor.css') }}">
+</head>
+<body class="login-page">
+<form class="login" method="post">
+  <div class="wordmark">DEHESA</div>
+  <p class="muted">Editor da loja</p>
+  {% if error %}<div class="alert" role="alert">{{ error }}</div>{% endif %}
+  <label>Utilizador<input name="user" autocomplete="username" autocapitalize="none" required autofocus></label>
+  <label>Palavra-passe<input name="password" type="password" autocomplete="current-password" required></label>
+  <button class="btn btn-dark">Entrar</button>
+</form>
+</body>
+</html>
