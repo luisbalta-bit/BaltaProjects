@@ -1,7 +1,7 @@
 #!/bin/bash
 # Instala o editor da loja Dehesa e publica-o no Caddy. Correr com: sudo bash instalar.sh
 set -e
-D=/home/mobauser/dehesa/editor
+D=/home/balta/dehesa/editor
 HOST=dehesa-editor.91.99.163.28.sslip.io
 cp $D/dehesa-editor.service /etc/systemd/system/
 systemctl daemon-reload

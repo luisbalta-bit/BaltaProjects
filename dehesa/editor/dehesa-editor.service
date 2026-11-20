@@ -3,11 +3,11 @@ Description=Dehesa - editor da loja por pedido (Flask/waitress porta 5056, pre-v
 After=network.target
 
 [Service]
-User=mobauser
-WorkingDirectory=/home/mobauser/dehesa/editor
-Environment=HOME=/home/mobauser
-Environment=PATH=/home/mobauser/.local/bin:/usr/local/bin:/usr/bin:/bin
-ExecStart=/home/mobauser/dehesa/editor/venv/bin/python app.py
+User=balta
+WorkingDirectory=/home/balta/dehesa/editor
+Environment=HOME=/home/balta
+Environment=PATH=/home/balta/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/balta/dehesa/editor/venv/bin/python app.py
 KillMode=mixed
 Restart=always
 RestartSec=3

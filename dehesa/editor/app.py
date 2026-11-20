@@ -1,7 +1,7 @@
 """Dehesa — editor por pedido (prompt + ficheiros). Flask, porta 5056.
 
 Cada pedido corre o Claude Code (modo restrito) na cópia de pré-visualização
-(/home/mobauser/dehesa/preview, ramo git `rascunho`). A pré-visualização corre
+(/home/balta/dehesa/preview, ramo git `rascunho`). A pré-visualização corre
 na porta 5057 e é mostrada através deste servidor (proxy). "Publicar" junta o
 rascunho à loja real (ramo `main`) e reinicia o serviço dehesa-loja.
 """
@@ -28,12 +28,12 @@ from werkzeug.security import check_password_hash, generate_password_hash
 BASE = Path(__file__).resolve().parent
 DATA = BASE / "data"
 UPLOADS = DATA / "uploads"
-LOJA = Path("/home/mobauser/dehesa/loja")
-PREVIEW = Path("/home/mobauser/dehesa/preview")
+LOJA = Path("/home/balta/dehesa/loja")
+PREVIEW = Path("/home/balta/dehesa/preview")
 SHOP_PY = LOJA / "venv/bin/python"
 PREVIEW_PORT = 5057
 LIVE_PORT = 5055
-CLAUDE = os.environ.get("CLAUDE_BIN", "/home/mobauser/.local/bin/claude")
+CLAUDE = os.environ.get("CLAUDE_BIN", "/home/balta/.local/bin/claude")
 MODEL = os.environ.get("EDITOR_MODEL", "sonnet")
 JOB_TIMEOUT = 15 * 60
 PROTECTED = re.compile(r"(\.sh|\.service|\.gitignore|caddy[^/]*\.txt|requirements\.txt)$")
