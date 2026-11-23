@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fermad · Madeiras &amp; Ferragens · Loja online</title>
+<meta name="description" content="Madeiras, pavimentos, rodapés, ferragens e acessórios. Cozinhas e roupeiros por medida. Armazém no Casal do Marco, Seixal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --grafite:#23272B; --carvalho:#B9773C; --carvalho-claro:#DDAA72; --serradura:#F4EEE5;
+  --nogueira:#7A4A1E; --texto:#23272B; --texto-2:#4A4F55; --linha:#E3DACD; --branco:#FFFFFF;
+  --raio:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Archivo,system-ui,sans-serif;color:var(--texto);background:var(--serradura);line-height:1.5}
+a{color:var(--nogueira)}a:hover{color:var(--grafite)}
+img,svg{display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+button,.btn{font:inherit;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:10px;border:2px solid var(--grafite);background:var(--grafite);color:var(--serradura);font-weight:700;text-decoration:none;transition:background .15s,color .15s}
+.btn:hover{background:#000;color:#fff}
+.btn.sec{background:transparent;color:var(--grafite)}
+.btn.sec:hover{background:var(--grafite);color:var(--serradura)}
+.btn.wood{background:var(--carvalho);border-color:var(--carvalho);color:var(--grafite)}
+.btn.wood:hover{background:var(--carvalho-claro);border-color:var(--carvalho-claro)}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--carvalho);outline-offset:2px}
+
+/* faixa demo */
+.demo{background:var(--nogueira);color:#fff;font-size:14px;text-align:center;padding:8px 16px}
+
+/* header */
+header{background:var(--branco);border-bottom:1px solid var(--linha);position:sticky;top:0;z-index:20}
+.hdr{display:flex;align-items:center;gap:24px;min-height:76px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--grafite)}
+.logo b{font-size:26px;font-weight:800;letter-spacing:.03em;line-height:1}
+.logo small{display:block;font-size:10.5px;font-weight:600;letter-spacing:.18em;color:#6B5A48;margin-top:4px}
+nav.main{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+nav.main a{padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--grafite);font-weight:600;font-size:15px}
+nav.main a:hover,nav.main a[aria-current="page"]{background:var(--serradura)}
+.cart-btn{position:relative;background:var(--serradura);border:0;border-radius:10px;min-height:46px;padding:0 16px;display:flex;align-items:center;gap:8px;font-weight:700;color:var(--grafite);text-decoration:none}
+.cart-btn .n{background:var(--carvalho);color:var(--grafite);border-radius:999px;min-width:24px;height:24px;display:inline-grid;place-items:center;font-size:13px;padding:0 6px}
+
+/* hero */
+.hero{background:var(--grafite);color:var(--serradura)}
+.hero .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:center;padding-top:72px;padding-bottom:72px}
+.eyebrow{font-size:14px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--carvalho-claro);margin:0 0 14px}
+.hero h1{font-size:clamp(36px,5vw,60px);line-height:1.05;margin:0 0 20px;font-weight:800;letter-spacing:-.01em}
+.hero p.lead{font-size:19px;color:#D9C7B0;margin:0 0 28px;max-width:540px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero .btn.sec{border-color:var(--serradura);color:var(--serradura)}
+.hero .btn.sec:hover{background:var(--serradura);color:var(--grafite)}
+.hero-art{background:#2C3136;border-radius:20px;aspect-ratio:4/3;display:grid;place-items:center;position:relative;overflow:hidden}
+.trust{display:flex;gap:28px;flex-wrap:wrap;margin-top:32px;font-size:15px;color:#D9C7B0}
+.trust strong{display:block;font-size:24px;color:var(--serradura)}
+
+/* sections */
+section{padding:72px 0}
+h2.sec-t{font-size:clamp(28px,3.4vw,40px);margin:0 0 8px;font-weight:800;letter-spacing:-.01em}
+p.sec-s{margin:0 0 36px;color:var(--texto-2);font-size:17px}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.cat{background:var(--branco);border-radius:var(--raio);padding:22px;text-decoration:none;color:var(--grafite);border:1px solid var(--linha);display:flex;flex-direction:column;gap:14px;transition:transform .15s,border-color .15s}
+.cat:hover{transform:translateY(-2px);border-color:var(--carvalho)}
+.cat h3{margin:0;font-size:18px}
+.cat span{font-size:14px;color:var(--texto-2)}
+
+/* shop */
+.shop{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.filters{flex:1 1 220px;max-width:100%;background:var(--branco);border:1px solid var(--linha);border-radius:var(--raio);padding:20px;display:flex;flex-direction:column;gap:6px}
+.filters h3{margin:0 0 8px;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:#6B5A48}
+.filters button{background:none;border:0;text-align:left;padding:10px 12px;border-radius:8px;font-weight:600;color:var(--grafite);min-height:44px}
+.filters button[aria-pressed="true"]{background:var(--serradura);color:var(--nogueira)}
+.grid-wrap{flex:999 1 560px;min-width:0}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:20px}
+.toolbar input{min-height:46px;border:1px solid var(--linha);border-radius:10px;padding:0 14px;font:inherit;background:var(--branco);flex:1 1 240px}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.card{background:var(--branco);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;display:flex;flex-direction:column}
+.card .thumb{aspect-ratio:4/3;background:var(--serradura);display:grid;place-items:center}
+.card .body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card .ref{font-size:12px;letter-spacing:.1em;color:#6B5A48;font-weight:600}
+.card h3{margin:0;font-size:17px;line-height:1.3}
+.card .spec{font-size:14px;color:var(--texto-2);margin:0}
+.price{display:flex;align-items:baseline;gap:6px;margin-top:auto;padding-top:8px}
+.price b{font-size:22px}
+.price span{font-size:13px;color:var(--texto-2)}
+.card .actions{display:flex;gap:8px;padding:0 18px 18px}
+.card .actions .btn{flex:1;min-height:44px;padding:0 12px;font-size:15px}
+.tag{display:inline-block;background:var(--serradura);color:var(--nogueira);font-size:12px;font-weight:700;border-radius:6px;padding:3px 8px;align-self:flex-start}
+
+/* medida */
+.medida{background:var(--branco)}
+.medida .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center}
+.steps{display:grid;gap:14px;margin:24px 0 28px;padding:0;list-style:none}
+.steps li{display:flex;gap:14px;align-items:flex-start}
+.steps li i{font-style:normal;flex:0 0 34px;height:34px;border-radius:999px;background:var(--carvalho);color:var(--grafite);display:grid;place-items:center;font-weight:800}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.rv{background:var(--branco);border:1px solid var(--linha);border-radius:var(--raio);padding:24px}
+.rv .big{font-size:44px;font-weight:800;line-height:1}
+.rv blockquote{margin:0;font-size:20px;font-weight:600}
+
+/* forms */
+form{display:grid;gap:16px}
+label{display:grid;gap:6px;font-weight:600;font-size:15px}
+input,select,textarea{font:inherit;min-height:46px;border:1px solid #CFC4B5;border-radius:10px;padding:10px 14px;background:var(--branco);color:var(--texto)}
+textarea{min-height:110px;resize:vertical}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+
+/* cart drawer */
+.drawer-bg{position:fixed;inset:0;background:rgba(20,22,24,.45);z-index:40;display:none}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(460px,100%);background:var(--branco);z-index:50;transform:translateX(100%);transition:transform .2s;display:flex;flex-direction:column}
+.drawer.open{transform:none}.drawer-bg.open{display:block}
+.drawer header{position:static;display:flex;justify-content:space-between;align-items:center;padding:20px 24px}
+.drawer h2{margin:0;font-size:22px}
+.icon-btn{background:var(--serradura);border:0;border-radius:10px;width:44px;height:44px;display:grid;place-items:center;color:var(--grafite)}
+.lines{flex:1;overflow:auto;padding:8px 24px}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:14px;padding:14px 0;border-bottom:1px solid var(--linha);align-items:center}
+.line .t{font-weight:700;font-size:15px;line-height:1.3}
+.line .u{font-size:13px;color:var(--texto-2)}
+.qty{display:flex;align-items:center;gap:6px;margin-top:6px}
+.qty button{width:34px;height:34px;border-radius:8px;border:1px solid var(--linha);background:var(--branco);font-weight:700}
+.qty input{width:70px;min-height:34px;padding:4px 8px;text-align:center}
+.totals{padding:20px 24px;border-top:1px solid var(--linha);display:grid;gap:6px}
+.totals div{display:flex;justify-content:space-between}
+.totals .grand{font-size:20px;font-weight:800;margin-top:6px}
+.empty{color:var(--texto-2);padding:24px 0}
+
+/* checkout */
+.checkout{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.checkout .main{flex:999 1 520px;min-width:0;background:var(--branco);border:1px solid var(--linha);border-radius:var(--raio);padding:28px}
+.checkout aside{flex:1 1 300px;background:var(--branco);border:1px solid var(--linha);border-radius:var(--raio);padding:24px}
+.note{background:var(--serradura);border-radius:10px;padding:14px 16px;font-size:14px;color:var(--texto-2)}
+.ok{background:#E8F1E4;border:1px solid #B9D3AE;color:#25421A;border-radius:12px;padding:20px}
+
+/* footer */
+footer{background:var(--grafite);color:#D9C7B0;padding:56px 0 32px;font-size:15px}
+footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-bottom:32px}
+footer h4{color:var(--serradura);margin:0 0 12px;font-size:15px;letter-spacing:.1em;text-transform:uppercase}
+footer a{color:var(--carvalho-claro)}
+footer p{margin:0 0 6px}
+.legal{border-top:1px solid #3A4046;padding-top:20px;font-size:13px;color:#A99A87}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--grafite);color:var(--serradura);padding:14px 20px;border-radius:12px;z-index:60;font-weight:600;display:none}
+.toast.show{display:block}
+.view[hidden]{display:none}
+.breadcrumb{font-size:14px;color:var(--texto-2);margin-bottom:16px}
+.pd{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;background:var(--branco);border:1px solid var(--linha);border-radius:var(--raio);padding:28px}
+.pd .thumb{background:var(--serradura);border-radius:12px;aspect-ratio:1;display:grid;place-items:center}
+.pd h1{margin:6px 0 12px;font-size:32px;line-height:1.15}
+.pd table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0}
+.pd td{padding:8px 0;border-bottom:1px solid var(--linha)}.pd td:first-child{color:var(--texto-2);width:45%}
+@media (max-width:720px){nav.main{order:3;flex-basis:100%;overflow-x:auto;flex-wrap:nowrap}.hdr{padding:10px 0}section{padding:48px 0}}
+</style>
+</head>
+<body>
+<div class="demo" role="note">Protótipo de demonstração. As encomendas não são processadas e não há pagamentos. Preços retirados de uma fatura real de julho de 2026.</div>
+
+<header>
+  <div class="wrap hdr">
+    <a class="logo" href="#inicio" aria-label="Fermad, página inicial">
+      <svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="20" y="14" width="24" height="92" rx="3" fill="#23272B"/><rect x="50" y="14" width="54" height="24" rx="3" fill="#B9773C"/><rect x="50" y="48" width="38" height="24" rx="3" fill="#B9773C"/><circle cx="32" cy="26" r="3.4" fill="#F4EEE5"/><circle cx="32" cy="94" r="3.4" fill="#F4EEE5"/></svg>
+      <span><b>FERMAD</b><small>MADEIRAS &amp; FERRAGENS</small></span>
+    </a>
+    <nav class="main" aria-label="Principal">
+      <a href="#inicio">Início</a>
+      <a href="#loja">Loja</a>
+      <a href="#medida">Cozinhas &amp; roupeiros</a>
+      <a href="#contactos">Contactos</a>
+    </nav>
+    <button class="cart-btn" type="button" id="openCart" aria-label="Abrir carrinho">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.5L21 8H6"/></svg>
+      Carrinho <span class="n" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<main>
+<!-- INÍCIO -->
+<div class="view" id="v-inicio">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Armazém no Casal do Marco · Seixal</p>
+        <h1>Madeira, ferragens e tudo para a obra, ao preço de armazém.</h1>
+        <p class="lead">Pavimentos vinílicos, rodapés, colas e acessórios para entrega ou levantamento no armazém. E se for cozinha ou roupeiro, desenhamos por medida.</p>
+        <div class="ctas">
+          <a class="btn wood" href="#loja">Ver a loja</a>
+          <a class="btn sec" href="#medida">Pedir orçamento por medida</a>
+        </div>
+        <div class="trust">
+          <div><strong>Desde 2014</strong>no Seixal</div>
+          <div><strong>84%</strong>recomendam no Facebook (32 críticas)</div>
+          <div><strong>4,3 mil</strong>seguidores</div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 400 300" width="88%">
+          <g fill="#B9773C">
+            <rect x="20" y="40" width="360" height="44" rx="4"/><rect x="20" y="92" width="250" height="44" rx="4"/><rect x="278" y="92" width="102" height="44" rx="4"/>
+            <rect x="20" y="144" width="140" height="44" rx="4"/><rect x="168" y="144" width="212" height="44" rx="4"/><rect x="20" y="196" width="300" height="44" rx="4"/><rect x="328" y="196" width="52" height="44" rx="4"/>
+          </g>
+          <g stroke="#DDAA72" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8">
+            <path d="M40 56c60-8 120 10 180 0s100 6 140 0"/><path d="M40 70c80 8 140-8 200 2s80-4 120 0"/>
+            <path d="M40 108c50-6 100 8 150 0s50 4 70 0"/><path d="M40 122c60 6 120-6 220 2"/>
+            <path d="M40 160c30-4 60 6 100 0"/><path d="M188 174c60-8 120 8 172 0"/><path d="M40 212c70 8 140-8 260 2"/><path d="M40 226c80-6 160 6 260-2"/>
+          </g>
+          <rect x="20" y="252" width="360" height="16" rx="3" fill="#F4EEE5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2 class="sec-t">O que vendemos</h2>
+      <p class="sec-s">Do pavimento à última dobradiça.</p>
+      <div class="cats" id="catTiles"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2 class="sec-t">Mais procurados</h2>
+      <p class="sec-s">Com preço fechado e stock no armazém.</p>
+      <div class="products" id="featured"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2 class="sec-t">Quem já comprou</h2>
+      <p class="sec-s">Opinião dos clientes na nossa página de Facebook.</p>
+      <div class="reviews">
+        <div class="rv"><div class="big">84%</div><p style="margin:8px 0 0">dos clientes recomendam a loja, em 32 críticas no Facebook.</p></div>
+        <div class="rv"><blockquote>“Excelentes profissionais, recomendo vivamente.”</blockquote><p style="margin:12px 0 0;color:var(--texto-2);font-size:14px">Cliente, no Facebook</p></div>
+        <div class="rv"><div class="big">4,3 mil</div><p style="margin:8px 0 0">pessoas seguem as novidades e promoções no Facebook.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- LOJA -->
+<div class="view" id="v-loja" hidden>
+  <section>
+    <div class="wrap">
+      <h2 class="sec-t">Loja</h2>
+      <p class="sec-s">Preços por unidade, com IVA a 23% incluído. Também mostramos o valor sem IVA, para profissionais.</p>
+      <div class="shop">
+        <div class="filters" role="group" aria-label="Categorias" id="filters"></div>
+        <div class="grid-wrap">
+          <div class="toolbar">
+            <label style="flex:1 1 260px;display:block"><span style="position:absolute;left:-9999px">Pesquisar produtos</span><input type="search" id="q" placeholder="Pesquisar: vinil, rodapé, cola…" style="width:100%"></label>
+            <select id="sort" aria-label="Ordenar">
+              <option value="rel">Ordenar: relevância</option>
+              <option value="asc">Preço: mais baixo</option>
+              <option value="desc">Preço: mais alto</option>
+            </select>
+          </div>
+          <div class="products" id="grid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PRODUTO -->
+<div class="view" id="v-produto" hidden>
+  <section><div class="wrap" id="pd"></div></section>
+</div>
+
+<!-- MEDIDA -->
+<div class="view" id="v-medida" hidden>
+  <section class="medida">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow" style="color:var(--nogueira)">Por medida</p>
+        <h2 class="sec-t">Cozinhas e roupeiros desenhados para a sua casa</h2>
+        <p class="sec-s" style="margin-bottom:0">Fabricamos e montamos cozinhas, roupeiros, portas e soalhos. Diga-nos o que precisa e respondemos com um orçamento.</p>
+        <ol class="steps">
+          <li><i>1</i><span><b>Envie as medidas</b> ou marque uma visita.</span></li>
+          <li><i>2</i><span><b>Escolha materiais</b> no armazém: carvalho, lacados, ferragens.</span></li>
+          <li><i>3</i><span><b>Recebe o orçamento</b> fechado, com montagem incluída.</span></li>
+        </ol>
+      </div>
+      <form id="quoteForm" class="main" style="background:var(--serradura);padding:28px;border-radius:var(--raio)">
+        <div class="two">
+          <label>Nome<input name="nome" required autocomplete="name"></label>
+          <label>Telefone<input name="tel" type="tel" required autocomplete="tel"></label>
+        </div>
+        <label>Email<input name="email" type="email" autocomplete="email"></label>
+        <label>O que precisa?
+          <select name="tipo"><option>Cozinha</option><option>Roupeiro</option><option>Portas</option><option>Soalho / pavimento</option><option>Outro</option></select>
+        </label>
+        <label>Medidas e detalhes<textarea name="msg" placeholder="Ex.: cozinha em L, 3,20 m × 2,10 m, pé-direito 2,60 m"></textarea></label>
+        <button class="btn" type="submit">Pedir orçamento</button>
+        <div id="quoteOk" class="ok" hidden role="status">Pedido registado nesta demonstração. Na versão final seguirá por email para geral@fermad.pt.</div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- CHECKOUT -->
+<div class="view" id="v-checkout" hidden>
+  <section>
+    <div class="wrap">
+      <h2 class="sec-t">Finalizar encomenda</h2>
+      <p class="sec-s">Entrega ao domicílio ou levantamento no armazém.</p>
+      <div class="checkout">
+        <form class="main" id="checkoutForm">
+          <h3 style="margin:0">Os seus dados</h3>
+          <div class="two">
+            <label>Nome<input name="nome" required autocomplete="name"></label>
+            <label>NIF (opcional)<input name="nif" inputmode="numeric" pattern="[0-9]{9}" title="9 dígitos"></label>
+          </div>
+          <div class="two">
+            <label>Telefone<input name="tel" type="tel" required autocomplete="tel"></label>
+            <label>Email<input name="email" type="email" required autocomplete="email"></label>
+          </div>
+          <label>Entrega
+            <select name="entrega" id="entrega">
+              <option value="levantar">Levantar no armazém (Seixal) · grátis</option>
+              <option value="entrega">Entrega ao domicílio · portes sob consulta</option>
+            </select>
+          </label>
+          <div id="morada" hidden class="two">
+            <label>Morada<input name="morada" autocomplete="street-address"></label>
+            <label>Código postal<input name="cp" pattern="[0-9]{4}-[0-9]{3}" placeholder="2840-162" autocomplete="postal-code"></label>
+          </div>
+          <label>Pagamento
+            <select name="pag"><option>Transferência bancária</option><option>MB Way</option><option>Pagamento no levantamento</option></select>
+          </label>
+          <p class="note">Nesta demonstração a encomenda não é enviada nem cobrada. Na versão final, o pagamento passa por um fornecedor certificado (por exemplo, Easypay ou SIBS) e a fatura sai do Sage.</p>
+          <button class="btn wood" type="submit">Confirmar encomenda</button>
+          <div id="orderOk" class="ok" hidden role="status"></div>
+        </form>
+        <aside>
+          <h3 style="margin:0 0 12px">Resumo</h3>
+          <div id="summary"></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACTOS -->
+<div class="view" id="v-contactos" hidden>
+  <section>
+    <div class="wrap">
+      <h2 class="sec-t">Contactos</h2>
+      <p class="sec-s">Passe no armazém ou fale connosco.</p>
+      <div class="reviews">
+        <div class="rv"><h3 style="margin-top:0">Armazém</h3><p>Rua António Pedro Mendonça, 54, Armazém C<br>Casal do Marco<br>2840-162 Seixal</p></div>
+        <div class="rv"><h3 style="margin-top:0">Telefone</h3><p><a href="tel:+351939425271">939 425 271</a><br><span style="font-size:13px;color:var(--texto-2)">Chamada para rede móvel nacional</span></p></div>
+        <div class="rv"><h3 style="margin-top:0">Email</h3><p><a href="mailto:geral@fermad.pt">geral@fermad.pt</a></p></div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer id="rodape">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="logo" style="color:var(--serradura);margin-bottom:12px">
+          <svg viewBox="0 0 120 120" width="40" height="40" aria-hidden="true"><rect x="20" y="14" width="24" height="92" rx="3" fill="#F4EEE5"/><rect x="50" y="14" width="54" height="24" rx="3" fill="#B9773C"/><rect x="50" y="48" width="38" height="24" rx="3" fill="#B9773C"/><circle cx="32" cy="26" r="3.4" fill="#23272B"/><circle cx="32" cy="94" r="3.4" fill="#23272B"/></svg>
+          <span><b style="font-size:22px">FERMAD</b></span>
+        </div>
+        <p>Madeiras, ferragens, cozinhas e roupeiros por medida.</p>
+      </div>
+      <div><h4>Loja</h4><p><a href="#loja">Todos os produtos</a></p><p><a href="#medida">Orçamento por medida</a></p></div>
+      <div><h4>Contactos</h4><p>Rua António Pedro Mendonça, 54, Arm. C<br>2840-162 Seixal</p><p><a href="tel:+351939425271">939 425 271</a> · <a href="mailto:geral@fermad.pt">geral@fermad.pt</a></p></div>
+    </div>
+    <div class="legal">MF &amp; AM – Madeiras e Ferragens, Lda. · NIF 513181822 · Capital social 100.000,00 € · Registada na C.R.C. do Seixal · <a href="https://www.livroreclamacoes.pt">Livro de Reclamações</a></div>
+  </div>
+</footer>
+
+<div class="drawer-bg" id="drawerBg"></div>
+<aside class="drawer" id="drawer" aria-label="Carrinho" aria-hidden="true">
+  <header><h2>Carrinho</h2><button class="icon-btn" type="button" id="closeCart" aria-label="Fechar carrinho"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>
+  <div class="lines" id="lines"></div>
+  <div class="totals" id="totals"></div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+const IVA = 0.23;
+const CATS = [
+  {id:'pavimentos', nome:'Pavimentos', desc:'Vinílico SPC, flutuante, soalho'},
+  {id:'rodapes', nome:'Rodapés & remates', desc:'PVC, MDF, perfis'},
+  {id:'colas', nome:'Colas & fixação', desc:'Silicones, colas, parafusos'},
+  {id:'acessorios', nome:'Acessórios de obra', desc:'Mangas, proteções, bases'},
+  {id:'medida', nome:'Por medida', desc:'Cozinhas, roupeiros, portas'}
+];
+// Preços s/IVA retirados da fatura FR 2026/1612 (julho 2026). Os produtos "por medida" não têm preço: são orçamento.
+const PRODUTOS = [
+  {ref:'2496', cat:'pavimentos', nome:'Pavimento vinílico SPC Egger 6006, carvalho', spec:'Réguas 1220 × 183 × 5 mm · caixa de 1,786 m²', un:'m²', preco:13.00, step:1.786, art:'vinil', destaque:true,
+   desc:'Pavimento vinílico rígido (SPC) com acabamento carvalho, resistente à água e de montagem por clique. Vendido ao m², em caixas de 1,786 m².',
+   ficha:[['Dimensões','1220 × 183 × 5 mm'],['Caixa','1,786 m²'],['Marca','Egger'],['Acabamento','Carvalho']]},
+  {ref:'1747', cat:'rodapes', nome:'Rodapé decor PVC papel branco', spec:'2200 × 100 × 14 mm', un:'m', preco:2.00, step:1, art:'rodape', destaque:true,
+   desc:'Rodapé em PVC com revestimento decorativo branco. Leve, fácil de cortar e resistente à humidade.',
+   ficha:[['Dimensões','2200 × 100 × 14 mm'],['Material','PVC com papel decorativo'],['Cor','Branco']]},
+  {ref:'928', cat:'colas', nome:'Prego líquido Soudal', spec:'Cola de montagem em cartucho', un:'un.', preco:3.50, step:1, art:'cola', destaque:true,
+   desc:'Cola de montagem de alta aderência, ideal para fixar rodapés, painéis e remates sem pregos nem parafusos.',
+   ficha:[['Marca','Soudal'],['Formato','Cartucho']]},
+  {ref:'2455', cat:'acessorios', nome:'Manga plástica preta', spec:'Proteção e cobertura em obra', un:'m', preco:0.57, step:1, art:'manga', destaque:true,
+   desc:'Manga de plástico preto para proteger pavimentos, móveis e materiais durante a obra.',
+   ficha:[['Cor','Preto'],['Venda','Ao metro']]},
+  {ref:'MED-COZ', cat:'medida', nome:'Cozinha por medida', spec:'Projeto, fabrico e montagem', orc:true, art:'cozinha',
+   desc:'Desenhamos a cozinha para o seu espaço, com a escolha de acabamentos e ferragens no nosso armazém.'},
+  {ref:'MED-ROU', cat:'medida', nome:'Roupeiro por medida', spec:'Portas de correr ou de abrir', orc:true, art:'roupeiro',
+   desc:'Roupeiros embutidos ou de canto, com interiores à medida das suas necessidades.'},
+  {ref:'MED-POR', cat:'medida', nome:'Portas interiores', spec:'Fornecimento e montagem', orc:true, art:'porta',
+   desc:'Portas interiores lisas, lacadas ou em madeira, com aros e guarnições.'}
+];
+
+const ART = {
+  vinil:'<svg viewBox="0 0 120 90" width="70%"><g fill="#B9773C"><rect x="6" y="10" width="108" height="16" rx="2"/><rect x="6" y="30" width="70" height="16" rx="2"/><rect x="80" y="30" width="34" height="16" rx="2"/><rect x="6" y="50" width="40" height="16" rx="2"/><rect x="50" y="50" width="64" height="16" rx="2"/><rect x="6" y="70" width="90" height="12" rx="2"/></g><g stroke="#DDAA72" stroke-width="1.2" fill="none"><path d="M12 18c30-4 60 4 96 0M12 38c20-3 40 3 58 0M56 58c20-3 40 3 52 0"/></g></svg>',
+  rodape:'<svg viewBox="0 0 120 90" width="70%"><rect x="6" y="20" width="108" height="40" rx="2" fill="#FFFFFF" stroke="#CFC4B5"/><rect x="6" y="56" width="108" height="10" fill="#23272B"/><path d="M6 30h108" stroke="#E3DACD"/></svg>',
+  cola:'<svg viewBox="0 0 120 90" width="70%"><rect x="20" y="34" width="70" height="22" rx="4" fill="#23272B"/><path d="M90 40l22 5-22 5z" fill="#B9773C"/><rect x="8" y="38" width="12" height="14" rx="2" fill="#B9773C"/><rect x="30" y="39" width="40" height="12" rx="2" fill="#F4EEE5"/></svg>',
+  manga:'<svg viewBox="0 0 120 90" width="70%"><ellipse cx="40" cy="45" rx="22" ry="30" fill="#23272B"/><ellipse cx="40" cy="45" rx="8" ry="11" fill="#F4EEE5"/><path d="M40 15h60v60H40" fill="#3A3F45"/><ellipse cx="40" cy="45" rx="22" ry="30" fill="#23272B"/><ellipse cx="40" cy="45" rx="8" ry="11" fill="#F4EEE5"/></svg>',
+  cozinha:'<svg viewBox="0 0 120 90" width="70%"><rect x="8" y="8" width="104" height="28" rx="3" fill="#B9773C"/><rect x="8" y="44" width="104" height="40" rx="3" fill="#23272B"/><g fill="#B9773C"><rect x="12" y="48" width="30" height="32" rx="2"/><rect x="46" y="48" width="30" height="32" rx="2"/><rect x="80" y="48" width="28" height="32" rx="2"/></g><g fill="#F4EEE5"><rect x="22" y="52" width="10" height="3" rx="1.5"/><rect x="56" y="52" width="10" height="3" rx="1.5"/><rect x="89" y="52" width="10" height="3" rx="1.5"/></g></svg>',
+  roupeiro:'<svg viewBox="0 0 120 90" width="70%"><rect x="20" y="4" width="80" height="82" rx="3" fill="#23272B"/><rect x="24" y="8" width="35" height="74" rx="2" fill="#B9773C"/><rect x="61" y="8" width="35" height="74" rx="2" fill="#B9773C"/><rect x="54" y="38" width="3" height="14" rx="1.5" fill="#F4EEE5"/><rect x="63" y="38" width="3" height="14" rx="1.5" fill="#F4EEE5"/></svg>',
+  porta:'<svg viewBox="0 0 120 90" width="70%"><rect x="38" y="4" width="44" height="82" rx="2" fill="#23272B"/><rect x="42" y="8" width="36" height="78" rx="1" fill="#B9773C"/><circle cx="72" cy="48" r="3" fill="#F4EEE5"/></svg>'
+};
+
+const fmt = v => v.toLocaleString('pt-PT',{style:'currency',currency:'EUR'});
+const comIva = p => Math.round(p*(1+IVA)*100)/100;
+const byRef = r => PRODUTOS.find(p=>p.ref===r);
+const $ = s => document.querySelector(s);
+
+// carrinho (memória + localStorage quando disponível)
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem('fermad-cart')||'[]'); } catch(e){ cart = []; }
+const save = () => { try { localStorage.setItem('fermad-cart', JSON.stringify(cart)); } catch(e){} renderCart(); };
+
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2200); }
+
+function add(ref, qtd){
+  const p = byRef(ref); if(!p || p.orc) return;
+  qtd = qtd || p.step || 1;
+  const l = cart.find(x=>x.ref===ref);
+  if(l) l.q = +(l.q + qtd).toFixed(3); else cart.push({ref, q:+qtd.toFixed(3)});
+  save(); toast('Adicionado: '+p.nome);
+}
+
+function card(p){
+  const price = p.orc
+    ? '<div class="price"><b style="font-size:18px">Sob orçamento</b></div>'
+    : `<div class="price"><b>${fmt(comIva(p.preco))}</b><span>/${p.un} c/IVA · ${fmt(p.preco)} s/IVA</span></div>`;
+  const act = p.orc
+    ? `<a class="btn" href="#medida">Pedir orçamento</a>`
+    : `<button class="btn" type="button" data-add="${p.ref}">Adicionar</button>`;
+  return `<article class="card">
+    <a class="thumb" href="#produto-${p.ref}" aria-label="Ver ${p.nome}">${ART[p.art]||''}</a>
+    <div class="body">
+      <span class="ref">REF. ${p.ref}</span>
+      <h3><a href="#produto-${p.ref}" style="color:inherit;text-decoration:none">${p.nome}</a></h3>
+      <p class="spec">${p.spec}</p>
+      ${price}
+    </div>
+    <div class="actions">${act}</div>
+  </article>`;
+}
+
+// categorias
+$('#catTiles').innerHTML = CATS.map(c=>`<a class="cat" href="#loja" data-cat="${c.id}"><svg viewBox="0 0 120 120" width="40" height="40" aria-hidden="true"><rect x="20" y="14" width="24" height="92" rx="3" fill="#23272B"/><rect x="50" y="14" width="54" height="24" rx="3" fill="#B9773C"/><rect x="50" y="48" width="38" height="24" rx="3" fill="#B9773C"/></svg><h3>${c.nome}</h3><span>${c.desc}</span></a>`).join('');
+$('#featured').innerHTML = PRODUTOS.filter(p=>p.destaque).map(card).join('');
+
+let filtro = 'todos';
+function renderFilters(){
+  const opts = [{id:'todos',nome:'Todos os produtos'}].concat(CATS);
+  $('#filters').innerHTML = '<h3>Categorias</h3>' + opts.map(c=>`<button type="button" data-f="${c.id}" aria-pressed="${c.id===filtro}">${c.nome}</button>`).join('');
+}
+function renderGrid(){
+  const q = $('#q').value.trim().toLowerCase();
+  let list = PRODUTOS.filter(p => (filtro==='todos'||p.cat===filtro) && (!q || (p.nome+' '+p.spec+' '+p.ref).toLowerCase().includes(q)));
+  const s = $('#sort').value;
+  if(s!=='rel') list = list.slice().sort((a,b)=>{ const va=a.orc?Infinity:a.preco, vb=b.orc?Infinity:b.preco; return s==='asc'?va-vb:vb-va; });
+  $('#grid').innerHTML = list.length ? list.map(card).join('') : '<p class="empty">Nenhum produto encontrado.</p>';
+}
+renderFilters(); renderGrid();
+$('#q').addEventListener('input', renderGrid);
+$('#sort').addEventListener('change', renderGrid);
+
+function renderProduto(ref){
+  const p = byRef(ref);
+  if(!p){ $('#pd').innerHTML='<p>Produto não encontrado. <a href="#loja">Voltar à loja</a></p>'; return; }
+  const cat = CATS.find(c=>c.id===p.cat);
+  const ficha = (p.ficha||[]).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+  const compra = p.orc
+    ? `<a class="btn wood" href="#medida">Pedir orçamento</a>`
+    : `<div class="price" style="padding:0 0 16px"><b style="font-size:32px">${fmt(comIva(p.preco))}</b><span>/${p.un} c/IVA · ${fmt(p.preco)} s/IVA</span></div>
+       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
+         <label>Quantidade (${p.un})<input type="number" id="pdQ" min="${p.step}" step="${p.step}" value="${p.step}" style="width:140px"></label>
+         <button class="btn wood" type="button" id="pdAdd">Adicionar ao carrinho</button>
+       </div>
+       ${p.step!==1?`<p class="note" style="margin-top:16px">Vendido em caixas de ${String(p.step).replace('.',',')} ${p.un}. A quantidade é arredondada à caixa.</p>`:''}`;
+  $('#pd').innerHTML = `<p class="breadcrumb"><a href="#loja">Loja</a> › ${cat?cat.nome:''}</p>
+    <div class="pd"><div class="thumb">${ART[p.art]||''}</div>
+    <div><span class="ref" style="font-size:13px;letter-spacing:.1em;color:#6B5A48;font-weight:600">REF. ${p.ref}</span><h1>${p.nome}</h1><p style="color:var(--texto-2)">${p.desc||''}</p>
+    ${ficha?`<table>${ficha}</table>`:''}${compra}</div></div>`;
+  const b = $('#pdAdd'); if(b) b.addEventListener('click',()=>{
+    let q = parseFloat($('#pdQ').value)||p.step;
+    if(p.step!==1) q = Math.ceil(q/p.step-1e-9)*p.step;
+    add(p.ref, q);
+  });
+}
+
+// carrinho
+function totais(){
+  const base = cart.reduce((s,l)=>{const p=byRef(l.ref);return s+(p?p.preco*l.q:0)},0);
+  const iva = base*IVA; return {base, iva, total: base+iva};
+}
+function renderCart(){
+  const n = cart.length; $('#cartCount').textContent = n;
+  if(!n){ $('#lines').innerHTML='<p class="empty">O carrinho está vazio.</p>'; $('#totals').innerHTML='<a class="btn sec" href="#loja" id="goShop">Ir para a loja</a>'; }
+  else {
+    $('#lines').innerHTML = cart.map(l=>{ const p=byRef(l.ref); if(!p) return '';
+      return `<div class="line"><div style="background:var(--serradura);border-radius:8px;aspect-ratio:1;display:grid;place-items:center">${ART[p.art]}</div>
+      <div><div class="t">${p.nome}</div><div class="u">${fmt(comIva(p.preco))}/${p.un}</div>
+      <div class="qty"><button type="button" data-dec="${p.ref}" aria-label="Menos">−</button><input aria-label="Quantidade" value="${String(l.q).replace('.',',')}" data-set="${p.ref}"><button type="button" data-inc="${p.ref}" aria-label="Mais">+</button></div></div>
+      <div style="text-align:right"><b>${fmt(comIva(p.preco)*l.q)}</b><br><button type="button" data-rm="${p.ref}" style="background:none;border:0;color:var(--nogueira);text-decoration:underline;min-height:44px">Remover</button></div></div>`;}).join('');
+    const t = totais();
+    $('#totals').innerHTML = `<div><span>Subtotal s/IVA</span><span>${fmt(t.base)}</span></div><div><span>IVA 23%</span><span>${fmt(t.iva)}</span></div><div class="grand"><span>Total</span><span>${fmt(t.total)}</span></div><a class="btn wood" href="#checkout" style="margin-top:12px">Finalizar encomenda</a>`;
+  }
+  renderSummary();
+}
+function renderSummary(){
+  const el = $('#summary'); if(!el) return;
+  if(!cart.length){ el.innerHTML='<p class="empty">Sem artigos. <a href="#loja">Ver a loja</a></p>'; return; }
+  const t = totais();
+  el.innerHTML = cart.map(l=>{const p=byRef(l.ref);return `<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--linha);font-size:15px"><span>${String(l.q).replace('.',',')} ${p.un} · ${p.nome}</span><b>${fmt(comIva(p.preco)*l.q)}</b></div>`}).join('')
+    + `<div class="totals" style="padding:16px 0 0;border:0"><div><span>Subtotal s/IVA</span><span>${fmt(t.base)}</span></div><div><span>IVA 23%</span><span>${fmt(t.iva)}</span></div><div class="grand"><span>Total</span><span>${fmt(t.total)}</span></div></div>`;
+}
+function step(ref, dir){ const p=byRef(ref), l=cart.find(x=>x.ref===ref); if(!l) return; l.q = +(l.q + dir*(p.step||1)).toFixed(3); if(l.q<=0) cart=cart.filter(x=>x!==l); save(); }
+
+function openCart(){ $('#drawer').classList.add('open'); $('#drawerBg').classList.add('open'); $('#drawer').setAttribute('aria-hidden','false'); $('#closeCart').focus(); }
+function closeCart(){ $('#drawer').classList.remove('open'); $('#drawerBg').classList.remove('open'); $('#drawer').setAttribute('aria-hidden','true'); }
+$('#openCart').addEventListener('click', openCart);
+$('#closeCart').addEventListener('click', closeCart);
+$('#drawerBg').addEventListener('click', closeCart);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeCart(); });
+
+document.addEventListener('click', e=>{
+  const t = e.target.closest('[data-add],[data-inc],[data-dec],[data-rm],[data-f],[data-cat],#goShop,a[href="#checkout"]');
+  if(!t) return;
+  if(t.dataset.add) add(t.dataset.add);
+  if(t.dataset.inc) step(t.dataset.inc, 1);
+  if(t.dataset.dec) step(t.dataset.dec, -1);
+  if(t.dataset.rm){ cart = cart.filter(x=>x.ref!==t.dataset.rm); save(); }
+  if(t.dataset.f){ filtro = t.dataset.f; renderFilters(); renderGrid(); }
+  if(t.dataset.cat){ filtro = t.dataset.cat; renderFilters(); renderGrid(); }
+  if(t.id==='goShop' || t.getAttribute('href')==='#checkout') closeCart();
+});
+document.addEventListener('change', e=>{
+  const t = e.target; if(!t.dataset || !t.dataset.set) return;
+  const p = byRef(t.dataset.set), l = cart.find(x=>x.ref===t.dataset.set);
+  let q = parseFloat(String(t.value).replace(',','.'));
+  if(!(q>0)) { cart = cart.filter(x=>x!==l); } else { if(p.step!==1) q = Math.ceil(q/p.step-1e-9)*p.step; l.q = +q.toFixed(3); }
+  save();
+});
+
+$('#entrega').addEventListener('change', e=>{ $('#morada').hidden = e.target.value!=='entrega'; });
+$('#checkoutForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  if(!cart.length){ toast('O carrinho está vazio.'); return; }
+  const t = totais();
+  const ok = $('#orderOk'); ok.hidden = false;
+  ok.innerHTML = `<b>Encomenda registada nesta demonstração.</b><br>Total: ${fmt(t.total)}. Na versão final receberia a confirmação por email e a referência de pagamento.`;
+  cart = []; save();
+});
+$('#quoteForm').addEventListener('submit', e=>{ e.preventDefault(); $('#quoteOk').hidden = false; e.target.reset(); });
+
+// rotas por hash
+const VIEWS = ['inicio','loja','produto','medida','checkout','contactos'];
+function route(){
+  let h = (location.hash||'#inicio').slice(1);
+  let v = h, ref = null;
+  if(h.startsWith('produto-')){ v='produto'; ref=h.slice(8); }
+  if(!VIEWS.includes(v)) v='inicio';
+  VIEWS.forEach(x=>{ const el=document.getElementById('v-'+x); if(el) el.hidden = x!==v; });
+  document.querySelectorAll('nav.main a').forEach(a=>a.toggleAttribute('aria-current', a.getAttribute('href')==='#'+v) || a.removeAttribute('aria-current'));
+  document.querySelectorAll('nav.main a').forEach(a=>{ if(a.getAttribute('href')==='#'+v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+  if(v==='produto') renderProduto(ref);
+  if(v==='checkout') renderSummary();
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange', route);
+route(); renderCart();
+})();
+</script>
+</body>
+</html>
